@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using StoreSolution.Web.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add service to connect to SQL Database
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+));
+
 // Add Hot Reload service to all pages
 builder.Services.AddRazorPages();
 
