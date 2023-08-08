@@ -11,6 +11,6 @@ namespace StoreSolution.Web.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
         // Code first approach for creating an SQL table
-        public DbSet<DepartmentModel> Departments { get; set; }
+        public DbSet<Department> Departments { get; set; }
     }
 }

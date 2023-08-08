@@ -2,7 +2,7 @@
 
 namespace StoreSolution.Web.Models
 {
-    public class DepartmentModel
+    public class Department
     {
         [Key]
         public int Id { get; set; }
