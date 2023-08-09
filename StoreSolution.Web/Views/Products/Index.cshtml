@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="ps-main__wrapper">
+    <header class="header--dashboard">
+        <div class="header__left">
+            <h3>Store Products</h3>
+            <p>Online Products List</p>
+        </div>
+        <div class="header__right">
+            <a class="ps-btn success" href="#"><i class="icon icon-plus mr-2"></i>New Product</a>
+        </div>
+    </header>
+    <section class="ps-items-listing">
+        <div class="ps-section__content">
+            <div class="table-responsive">
+                <table class="table ps-table">
+                    <thead>
+                        <tr>
+                            <th>Product No</th>
+                            <th>Product Name</th>
+                            <th>Product Style</th>
+                            <th>Product Category</th>
+                            <th>Product Size</th>
+                            <th>Product Price</th>
+                            <th>Added Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.ProductNo</td>
+                                <td>
+                                    <a href="#"><strong>@product.Name</strong></a>
+                                </td>
+                                <td>@product.Style</td>
+                                <td>
+                                    <p class="ps-item-categories">
+                                        <a href="#">@product.Category</a>
+                                    </p>
+                                </td>
+                                <td>@product.Size</td>
+                                <td><strong>$@product.Price</strong></td>
+
+                                <td class="text-left">@product.AddedDate.ToShortDateString()</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
