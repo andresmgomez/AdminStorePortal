@@ -9,7 +9,7 @@ namespace StoreSolution.Web.Models.Products
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-        public string? Brand { get; set; }
+        public string Brand { get; set; } = String.Empty;
 
         [Required(ErrorMessage = "You need to type a valid Product Name")]
         public string Name { get; set; }
@@ -18,9 +18,9 @@ namespace StoreSolution.Web.Models.Products
         public string Material { get; set; }
 
         [DefaultValue("Regular")]
-        public string Length { get; set; }
+        public string Length { get; set; } = "Regular";
 
         [DefaultValue("Casual")]
-        public string Style { get; set; }
+        public string Style { get; set; } = "Causual";
     }
 }
