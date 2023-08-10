@@ -1,9 +1,5 @@
 ﻿@model Product
 
-@{
-    ViewData["Title"] = "Add";
-}
-
 <div class="ps-main__wrapper">
     <header class="header--dashboard">
         <div class="header__left">
@@ -11,13 +7,13 @@
             <p>New Online Product</p>
         </div>
         <div class="header__right">
-            <a asp-controller="Products" asp-action="Index" class="header__site-link">
+            <a href="#" class="header__site-link">
                 <span>Go Back</span><i class="bi bi-box-arrow-in-left"></i>
             </a>
         </div>
     </header>
     <section class="ps-new-item">
-        <form class="ps-form ps-form--new-product" action="index.html" method="get">
+        <form class="ps-form ps-form--new-product" method="post">
             <div class="ps-form__content">
                 <div class="row">
                     <div class="col-sm-12 col-md-10 col-lg-8 col-xl-8">
@@ -77,5 +73,4 @@
             </div>
         </form>
     </section>
-
 </div>

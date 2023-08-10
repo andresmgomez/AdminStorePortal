@@ -19,9 +19,25 @@ namespace StoreSolution.Web.Controllers
             return View(currentProducts);
         }
 
-        public IActionResult Add()
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Product storeProduct)
+        {
+            if (ModelState.IsValid)
+            {
+                _dataContext.StoreProducts.Add(storeProduct);
+                _dataContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(storeProduct);
+
         }
     }
 }
