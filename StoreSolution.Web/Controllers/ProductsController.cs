@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StoreSolution.Web.Data;
 using StoreSolution.Web.Models;
-using System.Collections.Generic;
 
 namespace StoreSolution.Web.Controllers
 {
@@ -18,6 +17,11 @@ namespace StoreSolution.Web.Controllers
         {
             IEnumerable<Product>currentProducts = _dataContext.StoreProducts.ToList();
             return View(currentProducts);
+        }
+
+        public IActionResult Add()
+        {
+            return View();
         }
     }
 }
