@@ -3017,8 +3017,12 @@ textarea.form-control {
 }
 
 @media screen and (max-width: 580px) {
+    .ps-form .ps-form__bottom {
+        position: relative;
+        margin-left: -55px !important;
+    }
     .ps-form .ps-form__bottom .ps-btn {
-        margin-right: -30px !important;
+        width: 77%;
     }
 }
 
@@ -3406,54 +3410,27 @@ textarea.form-control {
 
 .ps-main {
     padding-top: 60px;
-    margin-bottom: 100px;
+    padding-bottom: 50px;
+
 }
 
-    .ps-main > * {
-        flex-basis: 100%;
-    }
-
-    .ps-main .ps-main__sidebar {
-        display: none;
-    }
-
-    .ps-main .ps-main__wrapper {
-        padding: 30px 16px;
-    }
-
-@media screen and (min-width: 1200px) {
-    .ps-main {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: stretch;
-        padding-top: 0;
-        min-height: 100vh;
-    }
-
-        .ps-main .ps-main__sidebar {
-            display: block;
-            max-width: 375px;
-            padding: 60px 0 60px 60px;
-            background-color: #f1f2f6;
-        }
-
-        .ps-main .ps-main__wrapper {
-            margin-top: 30px !important;
-        }
+.ps-main > * {
+    flex-basis: 100%;
 }
 
-@media screen and (min-width: 801px) {
-    .ps-main .ps-main__wrapper {
-        padding-top: 0px !important;
-        padding-left: 20px;
-    }
+.ps-main .ps-main__sidebar {
+    display: none;
 }
 
-@media screen and (max-width: 800px) {
+.ps-main .ps-main__wrapper {
+    padding: 0px 25px;
+}
+
+
+@media screen and (max-width: 514px) {
     .ps-main .ps-main__wrapper {
-        padding-top: 0px !important;
-        padding-left: 10px;
+        padding-left: 17px;
+        padding-right: 17px;
     }
 }
 

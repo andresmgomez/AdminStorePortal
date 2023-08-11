@@ -1,76 +1,90 @@
 ﻿@model Product
 
-<div class="ps-main__wrapper">
-    <header class="header--dashboard">
-        <div class="header__left">
-            <h3>Create Product</h3>
-            <p>New Online Product</p>
-        </div>
-        <div class="header__right">
-            <a href="#" class="header__site-link">
-                <span>Go Back</span><i class="bi bi-box-arrow-in-left"></i>
-            </a>
-        </div>
-    </header>
-    <section class="ps-new-item">
-        <form class="ps-form ps-form--new-product" method="post">
-            <div class="ps-form__content">
-                <div class="row">
-                    <div class="col-sm-12 col-md-10 col-lg-8 col-xl-8">
-                        <figure class="ps-block--form-box">
-                            <figcaption>General</figcaption>
-                            <div class="ps-block__content">
-                                <div class="row">
-                                    <div class="col-md-4 col-lg-5 col-xl-6">
-                                        <div class="form-group">
-                                            <label asp-for="ProductNo"></label><sup>*</sup>
-                                            <input asp-for="ProductNo" class="form-control" type="text" placeholder="Product Number..." />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-lg-7 col-xl-6">
-                                        <div class="form-group">
-                                            <label asp-for="Name"></label><sup>*</sup>
-                                            <input asp-for="Name" class="form-control" type="text" placeholder="Product Name..." />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label asp-for="Style"></label><sup>*</sup>
-                                            <input asp-for="Style" class="form-control" type="text" placeholder="Product Style..." />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label asp-for="Size"></label><sup>*</sup>
-                                            <input asp-for="Size" class="form-control" type="text" placeholder="Product Size..." />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 col-lg-7 col-xl-6">
-                                        <div class="form-group">
-                                            <label asp-for="Category"></label><sup>*</sup>
-                                            <input asp-for="Category" class="form-control" type="text" placeholder="Product Category..." />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-lg-5 col-xl-6">
-                                        <div class="form-group">
-                                            <label asp-for="Price"></label><sup>*</sup>
-                                            <input asp-for="Price" class="form-control" type="text" placeholder="Product Price..." />
-                                        </div>
-                                    </div>
-                                </div>
+@{
+    ViewData["Title"] = "Create";
+}
 
+
+<header class="header--dashboard">
+    <div class="header__left">
+        <h3>Create Product</h3>
+        <p>New Online Product</p>
+    </div>
+    <div class="header__right">
+        <a asp-controller="Products" asp-action="Index" class="header__site-link">
+            <span>Go Back</span><i class="bi bi-box-arrow-in-left"></i>
+        </a>
+    </div>
+</header>
+
+<form class="ps-form" method="post">
+    <div class="ps-form__content">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8 col-xl-8">
+                <figure class="ps-block--form-box">
+                    <figcaption>General</figcaption>
+                    <div class="ps-block__content">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ProductNo"></label><sup>*</sup>
+                                    <input asp-for="ProductNo" class="form-control" type="text" placeholder="Product Number..." />
+                                    <span asp-validation-for="ProductNo" class="text-danger"></span>
+                                </div>
                             </div>
-                        </figure>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name"></label><sup>*</sup>
+                                    <input asp-for="Name" class="form-control" type="text" placeholder="Product Name..." />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Style"></label><sup>*</sup>
+                                    <input asp-for="Style" class="form-control" type="text" placeholder="Product Style..." />
+                                    <span asp-validation-for="Style" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Size"></label><sup>*</sup>
+                                    <input asp-for="Size" class="form-control" type="text" placeholder="Product Size..." />
+                                    <span asp-validation-for="Size" class="text-danger mt-2"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Category"></label><sup>*</sup>
+                                    <input asp-for="Category" class="form-control" type="text" placeholder="Product Category..." />
+                                    <span asp-validation-for="Category" class="text-danger mt-2"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Price"></label><sup>*</sup>
+                                    <input asp-for="Price" class="form-control" type="text" placeholder="Product Price..." />
+                                    <span asp-validation-for="Price" class="text-danger mt-2"></span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
+                </figure>
             </div>
-            <div class="ps-form__bottom">
-                <button class="ps-btn success" type="submit">Add Product</button>
-            </div>
-        </form>
-    </section>
-</div>
+        </div>
+    </div>
+    <div class="ps-form__bottom">
+        <button class="ps-btn success" type="submit">Add Product</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

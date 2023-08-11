@@ -10,7 +10,7 @@ namespace StoreSolution.Web.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "You need to type a valid Product No")]
-        [StringLength(8, ErrorMessage = "Product No, needs to start with PRD, hyphen, followed by 4 digit numbers")]
+        [StringLength(10, MinimumLength = 8, ErrorMessage = "Product No needs to start with PRD, hyphen, followed by 4 digit numbers")]
         public string ProductNo { get; set; }
 
         [Required(ErrorMessage = "You need to type a valid Product Name")]
@@ -26,11 +26,10 @@ namespace StoreSolution.Web.Models
         public string Category { get; set; }
 
         [Required(ErrorMessage = "You need to type a valid Product Size")]
-        [StringLength(3, ErrorMessage = "Product Size, needs to start with size S, until XXL")]
+        [StringLength(3, MinimumLength = 1, ErrorMessage = "Product Size, needs to start with size S, until XXL")]
         public string Size { get; set; }
 
-        [Required(ErrorMessage = "You need to type a valid Product Price")]
-        [Range(30.0, 500.00)]
+        [Range(30.0, 500.00, ErrorMessage = "Product Size needs to have a valid price range")]
         public decimal Price { get; set; }
 
         public DateTime AddedDate { get; set; } = DateTime.UtcNow;
