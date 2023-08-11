@@ -50,6 +50,22 @@
                             <td><strong>$@product.Price</strong></td>
 
                             <td class="text-start">@product.AddedDate.ToShortDateString()</td>
+                           <td>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle"
+                                       role="button"
+                                       id="dropdownMenuButton"
+                                       data-bs-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false">
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li>
+                                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="dropdown-item">Edit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                     }
                 </tbody>

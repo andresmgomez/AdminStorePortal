@@ -37,7 +37,31 @@ namespace StoreSolution.Web.Controllers
             }
 
             return View(storeProduct);
+        }
 
+        [HttpGet]
+        public IActionResult Edit(int? Id)
+        {
+            // Find the productId that matches a store product
+            var selectedProduct = _dataContext.StoreProducts.SingleOrDefault(
+                storeProduct => storeProduct.Id == Id);
+
+            // Display product info if a valid productId is found
+            return selectedProduct == null || selectedProduct.Id != Id ? NotFound() : View(selectedProduct);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Product storeProduct) 
+        {
+            if (ModelState.IsValid)
+            {
+                _dataContext.StoreProducts.Update(storeProduct);
+                _dataContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(storeProduct);
         }
     }
 }
