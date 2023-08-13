@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StoreSolution.Web.Data;
+using StoreSolution.Web.Extensions;
 using StoreSolution.Web.Models;
 
 namespace StoreSolution.Web.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : NotificationsController
     {
         private readonly ApplicationDbContext _dataContext;
 
         public ProductsController(ApplicationDbContext dataContext)
         {
-            _dataContext = dataContext;   
+            _dataContext = dataContext;
         }
 
         public IActionResult Index()
@@ -33,6 +34,7 @@ namespace StoreSolution.Web.Controllers
             {
                 _dataContext.StoreProducts.Add(storeProduct);
                 _dataContext.SaveChanges();
+                TempData["success"] = "Store Product Added Successfully";
                 return RedirectToAction("Index");
             }
 
@@ -58,10 +60,42 @@ namespace StoreSolution.Web.Controllers
             {
                 _dataContext.StoreProducts.Update(storeProduct);
                 _dataContext.SaveChanges();
+                TempData["success"] = "Store Product Changed Successfully";
                 return RedirectToAction("Index");
             }
 
             return View(storeProduct);
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int? Id)
+        {
+            var selectedProduct = _dataContext.StoreProducts.FirstOrDefault(
+                    storeProduct => storeProduct.Id == Id);
+
+            if (selectedProduct == null || selectedProduct.Id != Id)
+            {
+                return NotFound();
+            }
+
+            CustomNotification("Are you sure you want to remove this item?", NotificationType.Error, "center", selectedProduct.Name);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int Id)
+        {
+            var selectedProduct = _dataContext.StoreProducts.Find(Id);
+
+            if (selectedProduct == null)
+            {
+                return NotFound();
+            }
+
+            _dataContext.StoreProducts.Remove(selectedProduct);
+            _dataContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
