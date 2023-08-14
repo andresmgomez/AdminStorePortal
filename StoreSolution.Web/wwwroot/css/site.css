@@ -2986,43 +2986,65 @@ textarea.form-control {
 }
 
 .ps-form .ps-form__bottom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 50px;
+    text-align: center;
 }
 
-    .ps-form .ps-form__bottom .ps-btn {
-        margin-right: -6rem !important;
-    }
+.ps-form .ps-form__bottom .ps-btn {
+    margin-right: 20px;
+}
 
-
-@media screen and (min-width: 992px) {
-    .ps-form .ps-form__bottom .ps-btn {
-        margin-right: 20rem !important;
+@media screen and (min-width: 1300px) {
+    .ps-form .ps-form__bottom {
+        margin-right: 10px !important;
+        position: relative;
+        right: 0;
     }
 }
 
-@media screen and (min-width: 766px) {
+@media screen and (min-width: 1200px) {
+    .ps-form .ps-form__bottom {
+        margin-left: -20px !important;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .ps-form .ps-form__bottom {
+        position: relative;
+        left: 3% !important;
+    }
+}
+
+@media screen and (min-width: 990px) {
+    .ps-form .ps-form__bottom {
+        position: relative;
+        left: 0 !important;
+        margin-left: 70px !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
     .ps-form .ps-form__bottom {
         position: relative;
         right: -15% !important;
     }
-}
-
-@media screen and (min-width: 581px) {
-    .ps-form .ps-form__bottom {
-        position: relative;
-        right: -25%;
-    }
-}
-
-@media screen and (max-width: 580px) {
-    .ps-form .ps-form__bottom {
-        position: relative;
-        margin-left: -55px !important;
-    }
     .ps-form .ps-form__bottom .ps-btn {
-        width: 77%;
+        max-width: 200px !important;
+     }
+}
+
+
+@media screen and (min-width: 375px) {
+    .ps-form .ps-form__bottom {
+        position: relative;
+        right: 0;
+        margin-top: -70px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .ps-form .ps-form__bottom .ps-btn {
+        width: 100%;
     }
 }
 
@@ -3035,11 +3057,11 @@ textarea.form-control {
     position: relative;
 }
 
-    .ps-form--search-bar input {
-        border: none;
-        border-bottom: 1px solid #ddd;
-        text-indent: 20px;
-    }
+.ps-form--search-bar input {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    text-indent: 20px;
+}
 
         .ps-form--search-bar input:hover {
             border-bottom-color: #fcb800;
@@ -3382,6 +3404,27 @@ textarea.form-control {
             margin-bottom: 0;
         }
 
+@media screen and (min-width: 375px) {
+    .ps-items-listing .ps-section__content {
+        margin-left: 0px;
+        margin-right: 3px;
+        margin-top: -40px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .ps-items-listing .ps-section__content {
+        margin-top: -40px;
+    }
+}
+
+@media screen and (min-width: 1430px) {
+    .ps-items-listing .ps-section__content {
+        margin-top: -20px;
+    }
+}
+
+
 @media screen and (min-width: 1280px) {
     .ps-items-listing .ps-section__header {
         display: flex;
@@ -3410,8 +3453,7 @@ textarea.form-control {
 
 .ps-main {
     padding-top: 60px;
-    padding-bottom: 50px;
-
+    margin-bottom: 50px;
 }
 
 .ps-main > * {
@@ -3426,11 +3468,50 @@ textarea.form-control {
     padding: 0px 25px;
 }
 
-
-@media screen and (max-width: 514px) {
+@media screen and (min-width: 375px) {
     .ps-main .ps-main__wrapper {
-        padding-left: 17px;
-        padding-right: 17px;
+        margin-left: -1rem;
+    }
+    .ps-main__wrapper .header--dashboard {
+        margin-top: -20px;
+    }
+    .header--dashboard .header__left > p {
+        margin-top: 0px;
+    }
+    .header--dashboard .header__right {
+        margin-top: -10px;
+    }
+    .header--dashboard .header__right > a {
+        padding: 10px 20px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .ps-main {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: stretch;
+        padding-top: 0;
+        min-height: 100vh;
+    }
+
+    .ps-main .ps-main__sidebar {
+        display: block;
+        max-width: 375px;
+        padding: 60px 0 60px 60px;
+        background-color: #f1f2f6;
+    }
+
+    .ps-main .ps-main__wrapper {
+        padding-top: 50px;
+        padding-left: 40px;
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    .ps-main .ps-main__wrapper {
+        padding: 60px 80px;
     }
 }
 

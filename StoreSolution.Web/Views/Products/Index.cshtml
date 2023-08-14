@@ -6,76 +6,77 @@
 
 <partial name="_ToastrNotification" />
 
-<header class="header--dashboard">
-    <div class="header__left">
-        <h3>Store Products</h3>
-        <p>Online Products List</p>
-    </div>
-    <div class="header__right">
-        <a asp-controller="Products" asp-action="Create" class="ps-btn success">
-            New Product <i class="bi bi-plus-square ml-5"></i>
-        </a>
-    </div>
-</header>
-<section class="ps-items-listing">
-    <div class="ps-section__content">
-        <div class="table-responsive">
-            <table class="table ps-table">
-                <thead>
-                    <tr>
-                        <th>Product No</th>
-                        <th>Product Name</th>
-                        <th>Product Style</th>
-                        <th>Product Category</th>
-                        <th>Product Size</th>
-                        <th>Product Price</th>
-                        <th>Added Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var product in Model)
-                    {
-                        <tr>
-                            <td>@product.ProductNo</td>
-                            <td>
-                                <a href="#"><strong>@product.Name</strong></a>
-                            </td>
-                            <td>@product.Style</td>
-                            <td>
-                                <p class="ps-item-categories">
-                                    <a href="#">@product.Category</a>
-                                </p>
-                            </td>
-                            <td>@product.Size</td>
-                            <td><strong>$@product.Price</strong></td>
-
-                            <td class="text-start">@product.AddedDate.ToShortDateString()</td>
-                           <td>
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle"
-                                       role="button"
-                                       id="dropdownMenuButton"
-                                       data-bs-toggle="dropdown"
-                                       aria-haspopup="true"
-                                       aria-expanded="false">
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="dropdown-item"><i class="bi bi-card-text"></i>&nbsp; Change Product</a>
-                                        </li>
-                                        <li>
-                                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item"><i class="bi bi-calendar2-x-fill"></i>&nbsp; Remove Product</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+<div class="ps-main__wrapper">
+    <header class="header--dashboard">
+        <div class="header__left">
+            <h3>Store Products</h3>
+            <p>Online Products List</p>
         </div>
-    </div>
-</section>
+        <div class="header__right">
+            <a asp-controller="Products" asp-action="Create" class="ps-btn success">
+                New Product <i class="bi bi-plus-square ml-5"></i>
+            </a>
+        </div>
+    </header>
+    <section class="ps-items-listing">
+        <div class="ps-section__content">
+            <div class="table-responsive">
+                <table class="table ps-table">
+                    <thead>
+                        <tr>
+                            <th>Product No</th>
+                            <th>Product Name</th>
+                            <th>Product Style</th>
+                            <th>Product Category</th>
+                            <th>Product Size</th>
+                            <th>Product Price</th>
+                            <th>Added Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model)
+                        {
+                            <tr>
+                                <td>@product.ProductNo</td>
+                                <td>
+                                    <a href="#"><strong>@product.Name</strong></a>
+                                </td>
+                                <td>@product.Style</td>
+                                <td>
+                                    <p class="ps-item-categories">
+                                        <a href="#">@product.Category</a>
+                                    </p>
+                                </td>
+                                <td>@product.Size</td>
+                                <td><strong>$@product.Price</strong></td>
+
+                                <td class="text-start">@product.AddedDate.ToShortDateString()</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a id="dropdownMenuButton"
+                                           data-toggle="dropdown"
+                                           aria-haspopup="true"
+                                           aria-expanded="false">
+                                            <i class="bi bi-three-dots"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li>
+                                                <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
+                                            </li>
+                                            <li>
+                                                <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
 
 <partial name="_AlertNotification" />

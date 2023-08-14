@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Sections\" />
+    <Folder Include="wwwroot\img\users\" />
     <Folder Include="wwwroot\lib\limonte-sweetalert2\cs\" />
     <Folder Include="wwwroot\lib\limonte-sweetalert2\js\" />
   </ItemGroup>
