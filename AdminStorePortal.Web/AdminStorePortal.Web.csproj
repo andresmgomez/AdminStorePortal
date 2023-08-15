@@ -14,8 +14,9 @@
   </ItemGroup>
 	
   <ItemGroup>
-	  <ProjectReference Include="..\AdminStorePortal.Data\AdminStorePortal.Data.csproj" />
+    <ProjectReference Include="..\AdminStorePortal.Data\AdminStorePortal.Data.csproj" />
     <ProjectReference Include="..\AdminStorePortal.Entities\AdminStorePortal.Entities.csproj" />
+	<ProjectReference Include="..\AdminStorePortal.Shared\AdminStorePortal.Shared.csproj" />
   </ItemGroup>
 	
 </Project>

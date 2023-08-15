@@ -1,21 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using AdminStorePortal.Data;
 using AdminStorePortal.Entities;
+using AdminStorePortal.Shared;
 
 namespace AdminStorePortal.Web;
 
 public class ProductsController : NotificationsController
 {
-    private readonly ApplicationDbContext _dataContext;
+    private readonly IProductRepository _dbProduct;
 
-    public ProductsController(ApplicationDbContext dataContext)
+    public ProductsController(IProductRepository dbProduct)
     {
-        _dataContext = dataContext;
+        _dbProduct = dbProduct;
     }
 
     public IActionResult Index()
     {
-        IEnumerable<Product>currentProducts = _dataContext.StoreProducts.ToList();
+        IEnumerable<Product>currentProducts = _dbProduct.GetAllEntities();
         return View(currentProducts);
     }
 
@@ -31,8 +31,8 @@ public class ProductsController : NotificationsController
     {
         if (ModelState.IsValid)
         {
-            _dataContext.StoreProducts.Add(storeProduct);
-            _dataContext.SaveChanges();
+            _dbProduct.AddEntity(storeProduct);
+            _dbProduct.SaveProduct();
             TempData["success"] = "Store Product Added Successfully";
             return RedirectToAction("Index");
         }
@@ -44,8 +44,7 @@ public class ProductsController : NotificationsController
     public IActionResult Edit(int? Id)
     {
         // Find the productId that matches a store product
-        var selectedProduct = _dataContext.StoreProducts.SingleOrDefault(
-            storeProduct => storeProduct.Id == Id);
+        var selectedProduct = _dbProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
 
         // Display product info if a valid productId is found
         return selectedProduct == null || selectedProduct.Id != Id ? NotFound() : View(selectedProduct);
@@ -57,8 +56,8 @@ public class ProductsController : NotificationsController
     {
         if (ModelState.IsValid)
         {
-            _dataContext.StoreProducts.Update(storeProduct);
-            _dataContext.SaveChanges();
+            _dbProduct.UpdateProduct(storeProduct);
+            _dbProduct.SaveProduct();
             TempData["success"] = "Store Product Changed Successfully";
             return RedirectToAction("Index");
         }
@@ -70,8 +69,7 @@ public class ProductsController : NotificationsController
     [HttpGet]
     public IActionResult Delete(int? Id)
     {
-        var selectedProduct = _dataContext.StoreProducts.FirstOrDefault(
-                storeProduct => storeProduct.Id == Id);
+        var selectedProduct = _dbProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
 
         if (selectedProduct == null || selectedProduct.Id != Id)
         {
@@ -85,15 +83,15 @@ public class ProductsController : NotificationsController
     [HttpPost]
     public IActionResult Delete(int Id)
     {
-        var selectedProduct = _dataContext.StoreProducts.Find(Id);
+        var selectedProduct = _dbProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
 
         if (selectedProduct == null)
         {
             return NotFound();
         }
 
-        _dataContext.StoreProducts.Remove(selectedProduct);
-        _dataContext.SaveChanges();
+        _dbProduct.RemoveEntity(selectedProduct);
+        _dbProduct.SaveProduct();
         return RedirectToAction("Index");
     }
 }

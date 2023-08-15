@@ -1,11 +1,11 @@
 ﻿
 using System.Linq.Expressions;
-using AdminStorePortal.Data;
 using Microsoft.EntityFrameworkCore;
+using AdminStorePortal.Data;
 
 namespace AdminStorePortal.Shared;
 
-public class BaseRepository<T> : IRepository<T> where T : class
+public class BaseRepository<T> : IBaseRepository<T> where T : class
 {
     private readonly ApplicationDbContext _dataContext;
     internal DbSet<T> dataSet;

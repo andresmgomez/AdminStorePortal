@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdminStorePortal.Shared;
 
-internal interface IRepository<T> where T : class
+public interface IBaseRepository<T> where T : class
 {
     T GetSingleEntity(Expression<Func<T, bool>> filter);
     IEnumerable<T> GetAllEntities();
