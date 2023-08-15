@@ -11,8 +11,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
 ));
-// Add service to handle product actions
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+// Add service to handle admin actions
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Add Hot Reload service to all pages
 builder.Services.AddRazorPages();
