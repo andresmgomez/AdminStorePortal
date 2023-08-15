@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Folder Include="Views\Sections\" />
+    <Folder Include="wwwroot\img\users\" />
+    <Folder Include="wwwroot\lib\limonte-sweetalert2\cs\" />
+    <Folder Include="wwwroot\lib\limonte-sweetalert2\js\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+	  <ProjectReference Include="..\AdminStorePortal.Data\AdminStorePortal.Data.csproj" />
+    <ProjectReference Include="..\AdminStorePortal.Entities\AdminStorePortal.Entities.csproj" />
+  </ItemGroup>
+	
+</Project>
