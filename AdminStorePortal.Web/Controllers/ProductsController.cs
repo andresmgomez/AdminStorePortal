@@ -31,8 +31,8 @@ public class ProductsController : NotificationsController
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.Product.AddEntity(storeProduct);
-            _unitOfWork.SaveEntity();
+            _unitOfWork.Product.AddAction(storeProduct);
+            _unitOfWork.SaveAction();
             TempData["success"] = "Store Product Added Successfully";
             return RedirectToAction("Index");
         }
@@ -57,7 +57,7 @@ public class ProductsController : NotificationsController
         if (ModelState.IsValid)
         {
             _unitOfWork.Product.UpdateProduct(storeProduct);
-            _unitOfWork.SaveEntity();
+            _unitOfWork.SaveAction();
             TempData["success"] = "Store Product Changed Successfully";
             return RedirectToAction("Index");
         }
@@ -90,8 +90,8 @@ public class ProductsController : NotificationsController
             return NotFound();
         }
 
-        _unitOfWork.Product.RemoveEntity(selectedProduct);
-        _unitOfWork.SaveEntity();
+        _unitOfWork.Product.RemoveAction(selectedProduct);
+        _unitOfWork.SaveAction();
         return RedirectToAction("Index");
     }
 }

@@ -19,7 +19,7 @@ public class UnitOfWork : IUnitOfWork
 
     public IProductRepository Product { get; private set; }
 
-    public void SaveEntity()
+    public void SaveAction()
     {
         _dbContext.SaveChanges();
     }

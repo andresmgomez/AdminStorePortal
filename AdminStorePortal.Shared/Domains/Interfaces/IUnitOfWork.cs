@@ -10,6 +10,6 @@ public interface IUnitOfWork
 {
     IProductRepository Product { get; }
 
-    void SaveEntity();
+    void SaveAction();
 
 }

@@ -16,7 +16,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         dataSet = _dataContext.Set<T>();
     }
 
-    public void AddEntity(T entity)
+    public void AddAction(T entity)
     {
         dataSet.Add(entity);
     }
@@ -34,7 +34,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         return dataQuery.FirstOrDefault();
     }
 
-    public void RemoveEntity(T entity)
+    public void RemoveAction(T entity)
     {
         dataSet.Remove(entity);
     }

@@ -12,6 +12,6 @@ public interface IBaseRepository<T> where T : class
     T GetSingleEntity(Expression<Func<T, bool>> filter);
     IEnumerable<T> GetAllEntities();
 
-    void AddEntity(T entity);
-    void RemoveEntity(T entity);
+    void AddAction(T entity);
+    void RemoveAction(T entity);
 }
