@@ -14,10 +14,10 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
-        StoreProduct = new ProductRepository(_dbContext);
+        RetailProduct = new RetailProductRepo(_dbContext);
     }
 
-    public IProductRepository StoreProduct { get; private set; }
+    public IRetailProductRepo RetailProduct { get; private set; }
 
     public void SaveAction()
     {

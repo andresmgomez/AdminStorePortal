@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LineProduct>
+﻿@model IEnumerable<RetailProduct>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
             <p>Online Products List</p>
         </div>
         <div class="header__right">
-            <a asp-controller="Products" asp-action="Create" class="ps-btn success">
+            <a asp-area="Products" asp-controller="Retail" asp-action="Create" class="ps-btn success">
                 New Product <i class="bi bi-plus-square ml-5"></i>
             </a>
         </div>
@@ -24,12 +24,12 @@
                 <table class="table ps-table">
                     <thead>
                         <tr>
-                            <th>Product No</th>
                             <th>Product Name</th>
-                            <th>Product Brand</th>
-                            <th>Product Price</th>
+                            <th>Product Season</th>
+                            <th>Product Size</th>
                             <th>Product Color</th>
-                            <th>Product Style</th>
+                            <th>Product Type</th>
+                            <th>Product Price</th>
                             <th>Added Date</th>
                             <th></th>
                         </tr>
@@ -38,17 +38,13 @@
                         @foreach (var product in Model)
                         {
                             <tr>
-                                <td>@product.Brand</td>
                                 <td>
                                     <a href="#"><strong>@product.Name</strong></a>
                                 </td>
-                                <td>@product.Style</td>
-                                <td>
-                                    <p class="ps-item-categories">
-                                        <a href="#">@product.Brand</a>
-                                    </p>
-                                </td>
+                                <td>@product.Season</td>
+                                <td>@product.Size</td>
                                 <td>@product.Color</td>
+                                <td>@product.Type</td>
                                 <td><strong>$@product.Price</strong></td>
                                 <td class="text-start">@product.AddedDate.ToShortDateString()</td>
                                 <td>
@@ -61,10 +57,10 @@
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <li>
-                                                <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
+                                                <a asp-area="Products" asp-controller="Retail" asp-action="Edit" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
                                             </li>
                                             <li>
-                                                <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
+                                                <a asp-area="Products" asp-controller="Retail" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
                                             </li>
                                         </ul>
                                     </div>
