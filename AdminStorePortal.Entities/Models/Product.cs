@@ -33,9 +33,4 @@ public class Product
     public decimal Price { get; set; }
 
     public DateTime AddedDate { get; set; } = DateTime.UtcNow;
-
-
-
-
-
 }

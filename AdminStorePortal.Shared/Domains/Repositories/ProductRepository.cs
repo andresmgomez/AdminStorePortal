@@ -9,7 +9,7 @@ using AdminStorePortal.Entities;
 
 namespace AdminStorePortal.Shared;
 
-public class ProductRepository : BaseRepository<Product>, IProductRepository
+public class ProductRepository : BaseRepository<LineProduct>, IProductRepository
 {
     private ApplicationDbContext _dataContext;
 
@@ -18,7 +18,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
         _dataContext = dataContext;
     }
  
-    public void UpdateProduct(Product singleProduct)
+    public void UpdateProduct(LineProduct singleProduct)
     {
         _dataContext.StoreProducts.Update(singleProduct);
     }

@@ -7,8 +7,8 @@ using AdminStorePortal.Entities;
 
 namespace AdminStorePortal.Shared;
 
-public interface IProductRepository : IBaseRepository<Product>
+public interface IProductRepository : IBaseRepository<LineProduct>
 {
-    void UpdateProduct(Product singleProduct);
+    void UpdateProduct(LineProduct lineProduct);
 
 }

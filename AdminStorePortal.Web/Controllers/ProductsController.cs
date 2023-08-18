@@ -15,7 +15,7 @@ public class ProductsController : NotificationsController
 
     public IActionResult Index()
     {
-        IEnumerable<Product>currentProducts = _unitOfWork.Product.GetAllEntities();
+        IEnumerable<LineProduct>currentProducts = _unitOfWork.StoreProduct.GetAllEntities();
         return View(currentProducts);
     }
 
@@ -27,24 +27,24 @@ public class ProductsController : NotificationsController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(Product storeProduct)
+    public IActionResult Create(LineProduct lineProduct)
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.Product.AddAction(storeProduct);
+            _unitOfWork.StoreProduct.AddAction(lineProduct);
             _unitOfWork.SaveAction();
             TempData["success"] = "Store Product Added Successfully";
             return RedirectToAction("Index");
         }
 
-        return View(storeProduct);
+        return View(lineProduct);
     }
 
     [HttpGet]
     public IActionResult Edit(int? Id)
     {
         // Find the productId that matches a store product
-        var selectedProduct = _unitOfWork.Product.GetSingleEntity(storeProduct => storeProduct.Id == Id);
+        var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
 
         // Display product info if a valid productId is found
         return selectedProduct == null || selectedProduct.Id != Id ? NotFound() : View(selectedProduct);
@@ -52,24 +52,24 @@ public class ProductsController : NotificationsController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(Product storeProduct) 
+    public IActionResult Edit(LineProduct lineProduct) 
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.Product.UpdateProduct(storeProduct);
+            _unitOfWork.StoreProduct.UpdateProduct(lineProduct);
             _unitOfWork.SaveAction();
             TempData["success"] = "Store Product Changed Successfully";
             return RedirectToAction("Index");
         }
 
-        return View(storeProduct);
+        return View(lineProduct);
     }
 
 
     [HttpGet]
     public IActionResult Delete(int? Id)
     {
-        var selectedProduct = _unitOfWork.Product.GetSingleEntity(storeProduct => storeProduct.Id == Id);
+        var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
 
         if (selectedProduct == null || selectedProduct.Id != Id)
         {
@@ -83,14 +83,14 @@ public class ProductsController : NotificationsController
     [HttpPost]
     public IActionResult Delete(int Id)
     {
-        var selectedProduct = _unitOfWork.Product.GetSingleEntity(storeProduct => storeProduct.Id == Id);
+        var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
 
         if (selectedProduct == null)
         {
             return NotFound();
         }
 
-        _unitOfWork.Product.RemoveAction(selectedProduct);
+        _unitOfWork.StoreProduct.RemoveAction(selectedProduct);
         _unitOfWork.SaveAction();
         return RedirectToAction("Index");
     }
