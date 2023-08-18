@@ -15,77 +15,36 @@ public class RetailController : NotificationsController
     }
 
     [HttpGet]
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult Create(RetailProduct lineProduct)
-    {
-        if (ModelState.IsValid)
-        {
-            _unitOfWork.RetailProduct.AddAction(lineProduct);
-            _unitOfWork.SaveAction();
-            TempData["success"] = "Store Product Added Successfully";
-            return RedirectToAction("Index");
-        }
-
-        return View(lineProduct);
-    }
-
-    [HttpGet]
-    public IActionResult Edit(int? Id)
+    public IActionResult Upsert(int? Id)
     {
         // Find the productId that matches a store product
         var selectedProduct = _unitOfWork.RetailProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
 
         // Display product info if a valid productId is found
-        return selectedProduct == null || selectedProduct.Id != Id ? NotFound() : View(selectedProduct);
+        return Id == null || Id == 0 ? View() : View(selectedProduct);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(RetailProduct lineProduct)
+    public IActionResult Upsert(RetailProduct lineProduct)
     {
         if (ModelState.IsValid)
         {
-            _unitOfWork.RetailProduct.UpdateProduct(lineProduct);
-            _unitOfWork.SaveAction();
-            TempData["success"] = "Store Product Changed Successfully";
-            return RedirectToAction("Index");
+            if (lineProduct != null)
+            {
+                _unitOfWork.RetailProduct.UpdateProduct(lineProduct);
+                _unitOfWork.SaveAction();
+                TempData["success"] = "Retail Product Changed Successfully";
+                // return RedirectToAction("Index");
+            } else 
+            {
+                _unitOfWork.RetailProduct.AddAction(lineProduct);
+                _unitOfWork.SaveAction();
+                TempData["success"] = "Retail Product Added Successfully";
+                // return RedirectToAction("Index");
+            }
         }
 
         return View(lineProduct);
     }
-
-    [HttpGet]
-    public IActionResult Delete(int? Id)
-    {
-        var selectedProduct = _unitOfWork.RetailProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
-
-        if (selectedProduct == null || selectedProduct.Id != Id)
-        {
-            return NotFound();
-        }
-
-        CustomNotification("Are you sure you want to remove this item?", NotificationType.Error, "center", selectedProduct.Name);
-        return RedirectToAction(nameof(Index));
-    }
-
-    // [HttpPost]
-    // public IActionResult Delete(int Id)
-    // {
-    //    var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
-    //
-    //    if (selectedProduct == null)
-    //    {
-    //        return NotFound();
-    //    }
-    //
-    //    _unitOfWork.StoreProduct.RemoveAction(selectedProduct);
-    //    _unitOfWork.SaveAction();
-    //    return RedirectToAction("Index");
-    // }
 }

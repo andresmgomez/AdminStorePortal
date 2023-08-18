@@ -4,8 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<partial name="_ToastrNotification" />
-
 <div class="ps-main__wrapper">
     <header class="header--dashboard">
         <div class="header__left">
@@ -13,7 +11,7 @@
             <p>Online Products List</p>
         </div>
         <div class="header__right">
-            <a asp-area="Products" asp-controller="Retail" asp-action="Create" class="ps-btn success">
+            <a asp-area="Products" asp-controller="Retail" asp-action="Upsert" class="ps-btn success">
                 New Product <i class="bi bi-plus-square ml-5"></i>
             </a>
         </div>
@@ -57,10 +55,10 @@
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <li>
-                                                <a asp-area="Products" asp-controller="Retail" asp-action="Edit" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
+                                                <a asp-area="Products" asp-controller="Retail" asp-action="Upsert" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
                                             </li>
                                             <li>
-                                                <a asp-area="Products" asp-controller="Retail" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
+                                                <a asp-area="Products" asp-controller="Online" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
                                             </li>
                                         </ul>
                                     </div>

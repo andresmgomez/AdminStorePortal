@@ -1,14 +1,24 @@
 ﻿@model RetailProduct
 
 @{
-    ViewData["Title"] = "Edit";
+    var pageTitle = "Create Product";
+    var pageSubtitle = "New Online Product";
 }
+
+<partial name="_ToastrNotification" />
 
 <div class="ps-main__wrapper">
     <header class="header--dashboard">
         <div class="header__left">
-            <h3>Modify Product</h3>
-            <p>Edit Online Product</p>
+            @if (Model == null)
+            {
+                <h3>@pageTitle</h3>
+                <p>@pageSubtitle</p>
+            } else
+            {
+                <h3>Modify Product</h3>
+                <p>Edit Online Product</p>
+            }
         </div>
         <div class="header__right">
             <a asp-area="Products" asp-controller="Online" asp-action="Index" class="header__site-link">
@@ -49,14 +59,21 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Price"></label><sup>*</sup>
+                                        <input asp-for="Price" class="form-control" type="text" placeholder="Product Price..." />
+                                        <span asp-validation-for="Price" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label asp-for="Color"></label><sup>*</sup>
                                         <input asp-for="Color" class="form-control" type="text" placeholder="Product Color..." />
                                         <span asp-validation-for="Color" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label asp-for="Type"></label><sup>*</sup>
                                         <input asp-for="Type" class="form-control" type="text" placeholder="Product Type..." />
@@ -70,7 +87,13 @@
             </div>
         </div>
         <div class="ps-form__bottom">
-            <button class="ps-btn success" type="submit">Change Product</button>
+            @if (Model == null)
+            {
+                <button class="ps-btn success" type="submit">Add Product</button>
+            } else
+            {
+                <button class="ps-btn success" type="submit">Change Product</button>
+            }
         </div>
     </form>
 </div>
