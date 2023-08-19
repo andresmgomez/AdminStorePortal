@@ -16,11 +16,6 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         dataSet = _dataContext.Set<T>();
     }
 
-    public void AddAction(T entity)
-    {
-        dataSet.Add(entity);
-    }
-
     public IEnumerable<T> GetAllEntities()
     {
         IQueryable<T> dataQuery = dataSet;
@@ -32,6 +27,16 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         IQueryable<T> dataQuery = dataSet;
         dataQuery = dataQuery.Where(filter);
         return dataQuery.FirstOrDefault();
+    }
+
+    public void AddAction(T entity)
+    {
+        dataSet.Add(entity);
+    }
+
+    public void UpdateAction(T entity)
+    {
+        dataSet.Update(entity);
     }
 
     public void RemoveAction(T entity)

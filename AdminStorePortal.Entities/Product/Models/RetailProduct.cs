@@ -9,8 +9,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdminStorePortal.Entities;
 
-[Table("RetailProducts")]
-public class RetailProduct
+[Table("LineProducts")]
+public class LineProduct
 {
     [Key]
     public int Id { get; set; }

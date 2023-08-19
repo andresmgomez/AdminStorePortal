@@ -11,5 +11,6 @@ public class ApplicationDbContext: DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
     // Code first approach for creating an SQL table
-    public DbSet<RetailProduct> RetailProduct { get; set; }
+    public DbSet<LineProduct> LineProduct { get; set; }
+    public DbSet<FabricProduct> FabricProduct { get; set; }
 }

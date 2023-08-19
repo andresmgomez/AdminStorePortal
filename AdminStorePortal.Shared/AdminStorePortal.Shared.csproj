@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminStorePortal.Data\AdminStorePortal.Data.csproj" />
+    <Compile Remove="Domains\**" />
+    <EmbeddedResource Remove="Domains\**" />
+    <None Remove="Domains\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domains\" />
+    <ProjectReference Include="..\AdminStorePortal.Data\AdminStorePortal.Data.csproj" />
   </ItemGroup>
 
 </Project>

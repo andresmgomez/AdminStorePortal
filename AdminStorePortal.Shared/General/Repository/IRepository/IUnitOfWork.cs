@@ -8,7 +8,8 @@ namespace AdminStorePortal.Shared;
 
 public interface IUnitOfWork
 {
-    IRetailProductRepo RetailProduct { get; }
+    IRawProductRepo RawProduct { get; }
+    IStoreProductRepo StoreProduct { get; }
 
     void SaveAction();
 

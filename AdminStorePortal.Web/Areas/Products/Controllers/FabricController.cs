@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdminStorePortal.Web;
 
 [Area("Products")]
-public class RetailController : NotificationsController
+public class FabricController : NotificationsController
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public RetailController(IUnitOfWork unitOfWork)
+    public FabricController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
@@ -18,7 +18,7 @@ public class RetailController : NotificationsController
     public IActionResult Upsert(int? Id)
     {
         // Find the productId that matches a store product
-        var selectedProduct = _unitOfWork.RetailProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
+        var selectedProduct = _unitOfWork.RawProduct.GetSingleEntity(fabricProduct => fabricProduct.Id == Id);
 
         // Display product info if a valid productId is found
         return Id == null || Id == 0 ? View() : View(selectedProduct);
@@ -26,25 +26,27 @@ public class RetailController : NotificationsController
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Upsert(RetailProduct lineProduct)
+    public IActionResult Upsert(FabricProduct fabricProduct)
     {
         if (ModelState.IsValid)
         {
-            if (lineProduct != null)
+            if (fabricProduct != null)
             {
-                _unitOfWork.RetailProduct.UpdateProduct(lineProduct);
+                _unitOfWork.RawProduct.UpdateAction(fabricProduct);
                 _unitOfWork.SaveAction();
-                TempData["success"] = "Retail Product Changed Successfully";
+                TempData["success"] = "Fabric Product Changed Successfully";
                 // return RedirectToAction("Index");
-            } else 
+            }
+            else
             {
-                _unitOfWork.RetailProduct.AddAction(lineProduct);
+                _unitOfWork.RawProduct.AddAction(fabricProduct);
                 _unitOfWork.SaveAction();
-                TempData["success"] = "Retail Product Added Successfully";
+                TempData["success"] = "Fabric Product Added Successfully";
                 // return RedirectToAction("Index");
             }
         }
 
-        return View(lineProduct);
+        return View(fabricProduct);
     }
+
 }

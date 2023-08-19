@@ -13,5 +13,6 @@ public interface IBaseRepository<T> where T : class
     IEnumerable<T> GetAllEntities();
 
     void AddAction(T entity);
+    void UpdateAction(T entity);
     void RemoveAction(T entity);
 }

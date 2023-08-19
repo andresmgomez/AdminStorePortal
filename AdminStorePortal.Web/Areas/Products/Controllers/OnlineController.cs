@@ -16,16 +16,16 @@ public class OnlineController : NotificationsController
 
     public IActionResult Index()
     {
-        IEnumerable<RetailProduct> retailProducts = _unitOfWork.RetailProduct.GetAllEntities();
+        IEnumerable<LineProduct> lineProducts = _unitOfWork.StoreProduct.GetAllEntities();
 
-        return View(retailProducts);
+        return View(lineProducts);
     }
 
 
     [HttpGet]
     public IActionResult Delete(int? Id)
     {
-        var selectedProduct = _unitOfWork.RetailProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
+        var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(lineProduct => lineProduct.Id == Id);
 
         if (selectedProduct == null || selectedProduct.Id != Id)
         {

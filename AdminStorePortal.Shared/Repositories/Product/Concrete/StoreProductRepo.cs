@@ -8,19 +8,12 @@ using System.Threading.Tasks;
 
 namespace AdminStorePortal.Shared;
 
-public class RetailProductRepo : BaseRepository<RetailProduct>, IRetailProductRepo
+public class StoreProductRepo : BaseRepository<LineProduct>, IStoreProductRepo
 {
     private ApplicationDbContext _dataContext;
 
-    public RetailProductRepo(ApplicationDbContext dataContext) : base(dataContext)
+    public StoreProductRepo(ApplicationDbContext dataContext) : base(dataContext)
     {
         _dataContext = dataContext;
     }
-
-    public void UpdateProduct(RetailProduct singleProduct)
-    {
-        _dataContext.RetailProduct.Update(singleProduct);
-    }
-
-
 }

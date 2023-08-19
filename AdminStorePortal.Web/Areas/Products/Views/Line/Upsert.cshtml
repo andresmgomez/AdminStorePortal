@@ -1,4 +1,4 @@
-﻿@model RetailProduct
+﻿@model LineProduct
 
 @{
     var pageTitle = "Create Product";
@@ -29,9 +29,9 @@
     <form class="ps-form" method="post">
         <div class="ps-form__content">
             <div class="row">
-                <div class="col-sm-12 col-md-10 col-lg-8 col-xl-8">
+                <div class="col-xs-12 col-sm-11 col-md-9 col-lg-8 col-xl-7">
                     <figure class="ps-block--form-box">
-                        <figcaption>Online Product</figcaption>
+                        <figcaption>Line Product</figcaption>
                         <div class="ps-block__content">
                             <div class="row">
                                 <div class="col-md-12">
@@ -43,14 +43,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label asp-for="Season"></label><sup>*</sup>
                                         <input asp-for="Season" class="form-control" type="text" placeholder="Product Season..." />
                                         <span asp-validation-for="Season" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label asp-for="Size"></label><sup>*</sup>
                                         <input asp-for="Size" class="form-control" type="text" placeholder="Product Size..." />
@@ -59,41 +59,42 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="Price"></label><sup>*</sup>
-                                        <input asp-for="Price" class="form-control" type="text" placeholder="Product Price..." />
-                                        <span asp-validation-for="Price" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group">
                                         <label asp-for="Color"></label><sup>*</sup>
                                         <input asp-for="Color" class="form-control" type="text" placeholder="Product Color..." />
                                         <span asp-validation-for="Color" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <div class="form-group">
                                         <label asp-for="Type"></label><sup>*</sup>
                                         <input asp-for="Type" class="form-control" type="text" placeholder="Product Type..." />
+                                        <span asp-validation-for="Type" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="Price"></label><sup>*</sup>
+                                        <input asp-for="Price" class="form-control" type="number" placeholder="Product Price..." />
                                         <span asp-validation-for="Type" class="text-danger mt-2"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </figure>
+                    <div class="ps-form__bottom">
+                    @if (Model == null)
+                    {
+                        <button class="ps-btn success" type="submit">Add Product</button>
+                    }
+                    else
+                    {
+                        <button class="ps-btn success" type="submit">Change Product</button>
+                    }
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="ps-form__bottom">
-            @if (Model == null)
-            {
-                <button class="ps-btn success" type="submit">Add Product</button>
-            } else
-            {
-                <button class="ps-btn success" type="submit">Change Product</button>
-            }
         </div>
     </form>
 </div>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RetailProduct>
+﻿@model IEnumerable<LineProduct>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,7 +11,7 @@
             <p>Online Products List</p>
         </div>
         <div class="header__right">
-            <a asp-area="Products" asp-controller="Retail" asp-action="Upsert" class="ps-btn success">
+            <a asp-area="Products" asp-controller="Line" asp-action="Upsert" class="ps-btn success">
                 New Product <i class="bi bi-plus-square ml-5"></i>
             </a>
         </div>

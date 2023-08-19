@@ -7,7 +7,4 @@ using System.Threading.Tasks;
 
 namespace AdminStorePortal.Shared;
 
-public interface IRetailProductRepo : IBaseRepository<RetailProduct>
-{
-    void UpdateProduct(RetailProduct singleProduct);
-}
+public interface IRawProductRepo : IBaseRepository<FabricProduct> {}
