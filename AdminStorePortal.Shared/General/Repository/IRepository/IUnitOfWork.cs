@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdminStorePortal.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ public interface IUnitOfWork
 {
     IRawProductRepo RawProduct { get; }
     IStoreProductRepo StoreProduct { get; }
+
+    public RetailProductVM GetRetailProducts();
 
     void SaveAction();
 

@@ -2,7 +2,7 @@
 
 @{
     var pageTitle = "Create Product";
-    var pageSubtitle = "New Online Product";
+    var pageSubtitle = "New Line Product";
 }
 
 <partial name="_ToastrNotification" />
@@ -21,7 +21,7 @@
             }
         </div>
         <div class="header__right">
-            <a asp-area="Products" asp-controller="Online" asp-action="Index" class="header__site-link">
+            <a asp-area="Products" asp-controller="Retail" asp-action="Index" class="header__site-link">
                 <span>Go Back</span><i class="bi bi-box-arrow-in-left"></i>
             </a>
         </div>
@@ -76,7 +76,7 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label asp-for="Price"></label><sup>*</sup>
-                                        <input asp-for="Price" class="form-control" type="number" placeholder="Product Price..." />
+                                        <input asp-for="Price" class="form-control" type="text" placeholder="Product Price..." />
                                         <span asp-validation-for="Type" class="text-danger mt-2"></span>
                                     </div>
                                 </div>

@@ -3016,7 +3016,8 @@ textarea.form-control {
     }
 
     .ps-form .ps-form__bottom .ps-btn {
-        width: 190px !important;
+        min-width: 180px !important;
+        width: 200px !important;
     }
 }
 

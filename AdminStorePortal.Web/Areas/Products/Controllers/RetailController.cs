@@ -5,20 +5,20 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdminStorePortal.Web;
 
 [Area("Products")]
-public class OnlineController : NotificationsController
+public class RetailController : NotificationsController
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public OnlineController(IUnitOfWork unitOfWork)
+    public RetailController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
 
     public IActionResult Index()
     {
-        IEnumerable<LineProduct> lineProducts = _unitOfWork.StoreProduct.GetAllEntities();
+        var retailProducts = _unitOfWork.GetRetailProducts();
 
-        return View(lineProducts);
+        return View(retailProducts);
     }
 
 
@@ -37,7 +37,7 @@ public class OnlineController : NotificationsController
     }
 
     // [HttpPost]
-    // public IActionResult Delete(int Id)
+    // public IActionResult DeleteProduct(int Id)
     // {
     //    var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
     //

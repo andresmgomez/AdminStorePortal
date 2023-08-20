@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LineProduct>
+﻿@model AdminStorePortal.Entities.RetailProductVM
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +8,7 @@
     <header class="header--dashboard">
         <div class="header__left">
             <h3>Store Products</h3>
-            <p>Online Products List</p>
+            <p>Retail Products List</p>
         </div>
         <div class="header__right">
             <a asp-area="Products" asp-controller="Line" asp-action="Upsert" class="ps-btn success">
@@ -22,29 +22,34 @@
                 <table class="table ps-table">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
                             <th>Product Season</th>
+                            <th>Product Name</th>
                             <th>Product Size</th>
-                            <th>Product Color</th>
-                            <th>Product Type</th>
                             <th>Product Price</th>
-                            <th>Added Date</th>
+                            <th>Product Type</th>
+                            <th>Product Material</th>
+                            <th>Product Style</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var product in Model)
-                        {
-                            <tr>
+                        <tr>
+                            @foreach (var product in Model.LineProducts)
+                            {
+                            
+                                <td>@product.Season</td>
                                 <td>
                                     <a href="#"><strong>@product.Name</strong></a>
                                 </td>
-                                <td>@product.Season</td>
                                 <td>@product.Size</td>
-                                <td>@product.Color</td>
-                                <td>@product.Type</td>
                                 <td><strong>$@product.Price</strong></td>
-                                <td class="text-start">@product.AddedDate.ToShortDateString()</td>
+                                <td>@product.Type</td>
+                            
+                            }
+                            @foreach (var product in Model.FabricProducts)
+                            {
+                                <td>@product.Material</td>
+                                <td>@product.Style</td>
                                 <td>
                                     <div class="dropdown">
                                         <a id="dropdownMenuButton"
@@ -55,20 +60,20 @@
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <li>
-                                                <a asp-area="Products" asp-controller="Retail" asp-action="Upsert" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
+                                                <a asp-area="Products" asp-controller="Line" asp-action="Upsert" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
                                             </li>
                                             <li>
-                                                <a asp-area="Products" asp-controller="Online" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
+                                                <a asp-area="Products" asp-controller="Retail" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </td>
-                            </tr>
-                        }
+                            }
+                        </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
+             </div>
+         </div>
     </section>
 </div>
 
