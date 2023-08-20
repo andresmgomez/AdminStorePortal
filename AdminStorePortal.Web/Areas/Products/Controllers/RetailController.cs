@@ -14,40 +14,37 @@ public class RetailController : NotificationsController
         _unitOfWork = unitOfWork;
     }
 
-    public IActionResult Index()
-    {
-        var retailProducts = _unitOfWork.GetRetailProducts();
-
-        return View(retailProducts);
-    }
-
-
     [HttpGet]
-    public IActionResult Delete(int? Id)
+    public IActionResult Upsert(int? Id)
     {
+        // Find the productId that matches a store product
         var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(lineProduct => lineProduct.Id == Id);
 
-        if (selectedProduct == null || selectedProduct.Id != Id)
-        {
-            return NotFound();
-        }
-
-        CustomNotification("Are you sure you want to remove this item?", NotificationType.Error, "center", selectedProduct.Name);
-        return RedirectToAction(nameof(Index));
+        // Display product info if a valid productId is found
+        return Id == null || Id == 0 ? View() : View(selectedProduct);
     }
 
-    // [HttpPost]
-    // public IActionResult DeleteProduct(int Id)
-    // {
-    //    var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(storeProduct => storeProduct.Id == Id);
-    //
-    //    if (selectedProduct == null)
-    //    {
-    //        return NotFound();
-    //    }
-    //
-    //    _unitOfWork.StoreProduct.RemoveAction(selectedProduct);
-    //    _unitOfWork.SaveAction();
-    //    return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Upsert(LineProduct lineProduct)
+    {
+        if (ModelState.IsValid)
+        {
+            if (lineProduct != null)
+            {
+                _unitOfWork.StoreProduct.UpdateAction(lineProduct);
+                _unitOfWork.SaveAction();
+                TempData["success"] = "Line Product Changed Successfully";
+                // return RedirectToAction("Index");
+            } else 
+            {
+                _unitOfWork.StoreProduct.AddAction(lineProduct);
+                _unitOfWork.SaveAction();
+                TempData["success"] = "Line Product Added Successfully";
+                // return RedirectToAction("Index");
+            }
+        }
+
+        return View(lineProduct);
+    }
 }

@@ -2,7 +2,7 @@
 
 @{
     var pageTitle = "Create Product";
-    var pageSubtitle = "New Deal Product";
+    var pageSubtitle = "New Discount Product";
 }
 
 <partial name="_ToastrNotification" />
@@ -17,11 +17,11 @@
             } else
             {
                 <h3>Modify Product</h3>
-                <p>Edit Deal Product</p>
+                <p>Edit Discount Product</p>
             }
         </div>
         <div class="header__right">
-            <a asp-area="Products" asp-controller="Retail" asp-action="Index" class="header__site-link">
+            <a asp-area="Store" asp-controller="Products" asp-action="Index" class="header__site-link">
                 <span>Go Back</span><i class="bi bi-box-arrow-in-left"></i>
             </a>
         </div>
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-sm-8 col-md-7 col-lg-6 col-xl-5">
                     <figure class="ps-block--form-box">
-                        <figcaption>Deal Product</figcaption>
+                        <figcaption>Discount Product</figcaption>
                         <div class="ps-block__content">
                             <div class="row">
                                 <div class="col">

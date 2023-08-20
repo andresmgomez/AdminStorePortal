@@ -8,10 +8,10 @@
     <header class="header--dashboard">
         <div class="header__left">
             <h3>Store Products</h3>
-            <p>Retail Products List</p>
+            <p>Online Products List</p>
         </div>
         <div class="header__right">
-            <a asp-area="Products" asp-controller="Line" asp-action="Upsert" class="ps-btn success">
+            <a asp-area="Products" asp-controller="Retail" asp-action="Upsert" class="ps-btn success">
                 New Product <i class="bi bi-plus-square ml-5"></i>
             </a>
         </div>
@@ -60,10 +60,10 @@
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <li>
-                                                <a asp-area="Products" asp-controller="Line" asp-action="Upsert" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
+                                                <a asp-area="Products" asp-controller="Retail" asp-action="Upsert" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
                                             </li>
                                             <li>
-                                                <a asp-area="Products" asp-controller="Retail" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
+                                                <a asp-area="Store" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
                                             </li>
                                         </ul>
                                     </div>
