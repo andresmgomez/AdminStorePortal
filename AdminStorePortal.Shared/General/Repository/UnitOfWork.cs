@@ -19,10 +19,13 @@ public class UnitOfWork : IUnitOfWork
         //
         RawProduct = new RawProductRepo(_dbContext);
         StoreProduct = new StoreProductRepo(_dbContext);
+        PromoProduct = new PromoProductRepo(_dbContext);
+        
     }
 
     public IRawProductRepo RawProduct { get; private set; }
     public IStoreProductRepo StoreProduct { get; private set; }
+    public IPromoProductRepo PromoProduct { get; private set; }
 
     public RetailProductVM GetRetailProducts()
     {

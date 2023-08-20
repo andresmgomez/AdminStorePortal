@@ -11,6 +11,7 @@ public interface IUnitOfWork
 {
     IRawProductRepo RawProduct { get; }
     IStoreProductRepo StoreProduct { get; }
+    IPromoProductRepo PromoProduct { get; }
 
     public RetailProductVM GetRetailProducts();
 

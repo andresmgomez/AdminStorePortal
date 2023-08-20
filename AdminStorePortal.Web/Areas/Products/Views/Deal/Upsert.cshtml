@@ -1,0 +1,79 @@
+﻿@model DealProduct
+
+@{
+    var pageTitle = "Create Product";
+    var pageSubtitle = "New Deal Product";
+}
+
+<partial name="_ToastrNotification" />
+
+<div class="ps-main__wrapper">
+    <header class="header--dashboard">
+        <div class="header__left">
+            @if (Model == null)
+            {
+                <h3>@pageTitle</h3>
+                <p>@pageSubtitle</p>
+            } else
+            {
+                <h3>Modify Product</h3>
+                <p>Edit Deal Product</p>
+            }
+        </div>
+        <div class="header__right">
+            <a asp-area="Products" asp-controller="Retail" asp-action="Index" class="header__site-link">
+                <span>Go Back</span><i class="bi bi-box-arrow-in-left"></i>
+            </a>
+        </div>
+    </header>
+    <form class="ps-form" method="post">
+        <div class="ps-form__content">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 col-lg-6 col-xl-5">
+                    <figure class="ps-block--form-box">
+                        <figcaption>Deal Product</figcaption>
+                        <div class="ps-block__content">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label asp-for="MinimumPrice"></label><sup>*</sup>
+                                        <input asp-for="MinimumPrice" class="form-control" type="text" />
+                                        <span asp-validation-for="MinimumPrice" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label asp-for="DiscountPrice"></label><sup>*</sup>
+                                        <input asp-for="DiscountPrice" class="form-control" type="text" />
+                                        <span asp-validation-for="DiscountPrice" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label asp-for="PercentageOff"></label><sup>*</sup>
+                                        <input asp-for="PercentageOff" class="form-control" type="number" />
+                                        <span asp-validation-for="PercentageOff" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </figure>
+                    <div class="ps-form__bottom">
+                    @if (Model == null)
+                    {
+                        <button class="ps-btn success" type="submit">Add Product</button>
+                    }
+                    else
+                    {
+                        <button class="ps-btn success" type="submit">Change Product</button>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
