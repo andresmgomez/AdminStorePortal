@@ -14,6 +14,7 @@ public interface IUnitOfWork
     IPromoProductRepo PromoProduct { get; }
 
     public RetailProductVM GetRetailProducts();
+    public OnlineProductVM GetOnlineProducts();
 
     void SaveAction();
 

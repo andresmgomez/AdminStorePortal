@@ -29,13 +29,24 @@ public class UnitOfWork : IUnitOfWork
 
     public RetailProductVM GetRetailProducts()
     {
-        RetailProductVM onlineProduct = new RetailProductVM()
+        RetailProductVM retailProducts = new RetailProductVM()
         {
+            LineProducts = _dbContext.LineProduct.ToList(),
             FabricProducts = _dbContext.FabricProduct.ToList(),
-            LineProducts = _dbContext.LineProduct.ToList()
         };
 
-        return onlineProduct;
+        return retailProducts;
+    }
+
+    public OnlineProductVM GetOnlineProducts()
+    {
+        OnlineProductVM onlineProducts = new OnlineProductVM()
+        {
+            LineProducts = _dbContext.LineProduct.ToList(),
+            DealProducts = _dbContext.DealProduct.ToList()
+        };
+
+        return onlineProducts;
     }
 
 

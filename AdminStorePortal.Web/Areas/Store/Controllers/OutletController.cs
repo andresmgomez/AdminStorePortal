@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdminStorePortal.Web;
 
 [Area("Store")]
-public class ProductsController : NotificationsController
+public class OutletController : NotificationsController
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public ProductsController(IUnitOfWork unitOfWork)
+    public OutletController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

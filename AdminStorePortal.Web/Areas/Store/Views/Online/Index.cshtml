@@ -1,4 +1,4 @@
-﻿@model AdminStorePortal.Entities.RetailProductVM
+﻿@model AdminStorePortal.Entities.OnlineProductVM
 
 @{
     ViewData["Title"] = "Index";
@@ -25,10 +25,11 @@
                             <th>Product Season</th>
                             <th>Product Name</th>
                             <th>Product Size</th>
-                            <th>Product Price</th>
+                            <th>Product Color</th>
                             <th>Product Type</th>
-                            <th>Product Material</th>
-                            <th>Product Style</th>
+                            <th>Product Discount</th>
+                            <th>Percentage Off</th>
+                            <th>Added Date</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -42,14 +43,18 @@
                                     <a href="#"><strong>@product.Name</strong></a>
                                 </td>
                                 <td>@product.Size</td>
+                                <td>@product.Color</td>
                                 <td><strong>$@product.Price</strong></td>
-                                <td>@product.Type</td>
                             
                             }
-                            @foreach (var product in Model.FabricProducts)
+                            @foreach (var product in Model.DealProducts)
                             {
-                                <td>@product.Material</td>
-                                <td>@product.Style</td>
+                                <td><strong>- $@product.DiscountPrice</strong></td>
+                                <td><strong>@product.PercentageOff %</strong></td>
+                            }
+                            @foreach (var product in Model.LineProducts)
+                            {
+                                <td class="text-left">@product.AddedDate.ToShortDateString()</td>
                                 <td>
                                     <div class="dropdown">
                                         <a id="dropdownMenuButton"
@@ -63,7 +68,7 @@
                                                 <a asp-area="Products" asp-controller="Retail" asp-action="Upsert" asp-route-id="@product.Id" class="dropdown-item">Change Product</a>
                                             </li>
                                             <li>
-                                                <a asp-area="Store" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
+                                                <a asp-area="Store" asp-controller="Online" asp-action="Delete" asp-route-id="@product.Id" class="dropdown-item">Remove Product</a>
                                             </li>
                                         </ul>
                                     </div>
