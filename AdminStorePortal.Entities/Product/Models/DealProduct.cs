@@ -15,13 +15,15 @@ public class DealProduct
     [Key]
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "You need to type a valid Minimum Price")]
+    [Required]
+    [Range(20.99, 80.0, ErrorMessage = "Minimum price cannot be less than $20")]
     public decimal MinimumPrice { get; set; }
 
-    [Required(ErrorMessage = "You need to type a valid Discount Price")]
+    [Required]
+    [Range(5.0, 35.0, ErrorMessage = "Discount price cannot be larger than $35")]
     public decimal DiscountPrice { get; set; }
 
-    [Required(ErrorMessage = "You need to type a valid Percentage")]
-    [DisplayName("Promo Deal")]
+    [Required]
+    [Range(5, 45, ErrorMessage = "Percentage off cannot be larger than 45 %")]
     public int PercentageOff { get; set; }
 }

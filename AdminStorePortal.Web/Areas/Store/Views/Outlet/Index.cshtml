@@ -22,7 +22,7 @@
                 <table class="table ps-table">
                     <thead>
                         <tr>
-                            <th>Product Id</th>
+                            <th>Product No</th>
                             <th>Product Name</th>
                             <th>Product Type</th>
                             <th>Product Size</th>
@@ -37,7 +37,7 @@
                             @foreach (var product in Model.LineProducts)
                             {
                             
-                                <td>@product.Id</td>
+                                <td>@product.LineProductNo</td>
                                 <td>
                                     <a href="#"><strong>@product.Name</strong></a>
                                 </td>

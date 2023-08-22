@@ -34,10 +34,17 @@
                         <figcaption>Retail Product</figcaption>
                         <div class="ps-block__content">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-sm-3 col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="LineProductNo"></label><sup>*</sup>
+                                        <input asp-for="LineProductNo" class="form-control" type="text" placeholder="PRD-1001" />
+                                        <span asp-validation-for="LineProductNo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 col-md-8">
                                     <div class="form-group">
                                         <label asp-for="Name"></label><sup>*</sup>
-                                        <input asp-for="Name" class="form-control" type="text" placeholder="Product Name..." />
+                                        <input asp-for="Name" class="form-control" type="text" />
                                         <span asp-validation-for="Name" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -46,14 +53,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label asp-for="Season"></label><sup>*</sup>
-                                        <input asp-for="Season" class="form-control" type="text" placeholder="Product Season..." />
+                                        <input asp-for="Season" class="form-control" type="text" />
                                         <span asp-validation-for="Season" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label asp-for="Size"></label><sup>*</sup>
-                                        <input asp-for="Size" class="form-control" type="text" placeholder="Product Size..." />
+                                        <input asp-for="Size" class="form-control" type="text" />
                                         <span asp-validation-for="Size" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -62,21 +69,21 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label asp-for="Color"></label><sup>*</sup>
-                                        <input asp-for="Color" class="form-control" type="text" placeholder="Product Color..." />
+                                        <input asp-for="Color" class="form-control" type="text" />
                                         <span asp-validation-for="Color" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label asp-for="Type"></label><sup>*</sup>
-                                        <input asp-for="Type" class="form-control" type="text" placeholder="Product Type..." />
+                                        <input asp-for="Type" class="form-control" type="text" />
                                         <span asp-validation-for="Type" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label asp-for="Price"></label><sup>*</sup>
-                                        <input asp-for="Price" class="form-control" type="text" placeholder="Product Price..." />
+                                        <input asp-for="Price" class="form-control" type="text" />
                                         <span asp-validation-for="Type" class="text-danger mt-2"></span>
                                     </div>
                                 </div>
