@@ -9,6 +9,11 @@ namespace AdminStorePortal.Shared;
 
 public interface IUnitOfWork
 {
+    // Product's category classes
+    ICategoryMaterialRepo CategoryMaterial { get; }
+    ICategoryStyleRepo CategoryStyle { get; }
+
+    // Store's product classes
     IRawProductRepo RawProduct { get; }
     IStoreProductRepo StoreProduct { get; }
     IPromoProductRepo PromoProduct { get; }

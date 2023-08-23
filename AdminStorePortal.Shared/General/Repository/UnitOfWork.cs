@@ -16,13 +16,22 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
-        //
+
+        // Instances of Products's categories
+        CategoryMaterial = new CategoryMaterialRepo(dbContext);
+        CategoryStyle = new CategoryStyleRepo(dbContext);
+
+        // Instances of Store's products
         RawProduct = new RawProductRepo(_dbContext);
         StoreProduct = new StoreProductRepo(_dbContext);
         PromoProduct = new PromoProductRepo(_dbContext);
-        
     }
 
+    // Private implementation of Product's categories
+    public ICategoryMaterialRepo CategoryMaterial { get; private set; }
+    public ICategoryStyleRepo CategoryStyle { get; private set; }
+
+    // Private implementation of Store's products
     public IRawProductRepo RawProduct { get; private set; }
     public IStoreProductRepo StoreProduct { get; private set; }
     public IPromoProductRepo PromoProduct { get; private set; }

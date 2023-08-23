@@ -4,7 +4,7 @@
 
 namespace AdminStorePortal.Data
 {
-    public partial class CreateInitialProductCatgories : Migration
+    public partial class CreateInitialProductCategories : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

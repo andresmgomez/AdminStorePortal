@@ -1,6 +1,7 @@
 ﻿using AdminStorePortal.Entities;
 using AdminStorePortal.Shared;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdminStorePortal.Web;
 
@@ -17,8 +18,23 @@ public class RetailController : NotificationsController
     [HttpGet]
     public IActionResult Upsert(int? Id)
     {
-        // Find the productId that matches a store product
-        var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(lineProduct => lineProduct.Id == Id);
+        LineProduct selectedProduct = new();
+        IEnumerable<SelectListItem> productMaterials = _unitOfWork.CategoryMaterial.GetAllEntities().Select(
+            category => new SelectListItem
+            {
+                Text = category.Material,
+                Value = category.Id.ToString()
+            });
+
+        IEnumerable<SelectListItem> productStyles = _unitOfWork.CategoryStyle.GetAllEntities().Select(
+            category => new SelectListItem
+            {
+                Text = category.Style,
+                Value = category.Id.ToString()
+            });
+
+        ViewBag.ProductMaterials = productMaterials;
+        ViewBag.ProductStyles = productStyles;
 
         // Display product info if a valid productId is found
         return Id == null || Id == 0 ? View() : View(selectedProduct);

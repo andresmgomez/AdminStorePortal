@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdminStorePortal.Data
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230823023511_CreateInitialProductCatgories")]
-    partial class CreateInitialProductCatgories
+    [Migration("20230823023511_CreateInitialProductCategories")]
+    partial class CreateInitialProductCategories
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
