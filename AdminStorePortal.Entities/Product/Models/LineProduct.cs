@@ -50,17 +50,5 @@ public class LineProduct
     [Range(12.99, 100.0, ErrorMessage = "Price cannot be greater than $100")]
     public decimal Price { get; set; }
 
-    [DisplayName("Product Material")]
-    public int MaterialId { get; set; }
-
-    [ForeignKey("MaterialId")]
-    public ClothingMaterial ClothingMaterial { get; set; }
-
-    [DisplayName("Product Style")]
-    public int StyleId { get; set; }
-    
-    [ForeignKey("StyleId")]
-    public ClothingStyle ClothingStyle { get; set; }
-
     public DateTime AddedDate { get; set; } = DateTime.UtcNow;
 }

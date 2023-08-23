@@ -12,10 +12,6 @@ public class ApplicationDbContext: DbContext
 
     // Code first approach for creating an SQL table
     public DbSet<LineProduct> LineProduct { get; set; }
-    public DbSet<ClothingMaterial> ClothingMaterial { get; set; }
-    public DbSet<ClothingStyle> ClothingStyle { get; set; }
-
-    //
     public DbSet<FabricProduct> FabricProduct { get; set; }
     public DbSet<DealProduct> DealProduct { get; set; }
 }

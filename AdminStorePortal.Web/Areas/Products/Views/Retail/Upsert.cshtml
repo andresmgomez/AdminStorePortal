@@ -66,30 +66,6 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group--select">
-                                        <label asp-for="MaterialId"></label><sup>*</sup>
-                                        <div class="form-group__content">
-                                            <select asp-for="MaterialId" asp-items="ViewBag.ProductMaterials">
-                                                <option selected>Choose Material</option>
-                                            </select>
-                                        </div>
-                                        <span asp-validation-for="MaterialId" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-group--select">
-                                        <label asp-for="StyleId"></label><sup>*</sup>
-                                        <div class="form-group__content">
-                                            <select asp-for="StyleId" asp-items="ViewBag.ProductStyles" class="ps-select" title="Material">
-                                                <option selected>Choose Style</option>
-                                            </select>
-                                        </div>
-                                        <span asp-validation-for="StyleId" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <label asp-for="Color"></label><sup>*</sup>

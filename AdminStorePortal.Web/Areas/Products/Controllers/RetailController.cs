@@ -17,24 +17,8 @@ public class RetailController : NotificationsController
 
     [HttpGet]
     public IActionResult Upsert(int? Id)
-    {
-        LineProduct selectedProduct = new();
-        IEnumerable<SelectListItem> productMaterials = _unitOfWork.CategoryMaterial.GetAllEntities().Select(
-            category => new SelectListItem
-            {
-                Text = category.Material,
-                Value = category.Id.ToString()
-            });
-
-        IEnumerable<SelectListItem> productStyles = _unitOfWork.CategoryStyle.GetAllEntities().Select(
-            category => new SelectListItem
-            {
-                Text = category.Style,
-                Value = category.Id.ToString()
-            });
-
-        ViewBag.ProductMaterials = productMaterials;
-        ViewBag.ProductStyles = productStyles;
+    {// Find the productId that matches a store product
+        var selectedProduct = _unitOfWork.StoreProduct.GetSingleEntity(lineProduct => lineProduct.Id == Id);
 
         // Display product info if a valid productId is found
         return Id == null || Id == 0 ? View() : View(selectedProduct);
@@ -51,13 +35,11 @@ public class RetailController : NotificationsController
                 _unitOfWork.StoreProduct.UpdateAction(lineProduct);
                 _unitOfWork.SaveAction();
                 TempData["success"] = "Line Product Changed Successfully";
-                // return RedirectToAction("Index");
             } else 
             {
                 _unitOfWork.StoreProduct.AddAction(lineProduct);
                 _unitOfWork.SaveAction();
                 TempData["success"] = "Line Product Added Successfully";
-                // return RedirectToAction("Index");
             }
         }
 

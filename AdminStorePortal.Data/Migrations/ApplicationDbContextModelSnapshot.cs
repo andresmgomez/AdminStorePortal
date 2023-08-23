@@ -22,40 +22,6 @@ namespace AdminStorePortal.Data
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("AdminStorePortal.Entities.ClothingMaterial", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Material")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ClothingMaterial");
-                });
-
-            modelBuilder.Entity("AdminStorePortal.Entities.ClothingStyle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Style")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ClothingStyle");
-                });
-
             modelBuilder.Entity("AdminStorePortal.Entities.DealProduct", b =>
                 {
                     b.Property<int>("Id")
@@ -136,9 +102,6 @@ namespace AdminStorePortal.Data
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("MaterialId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(40)
@@ -157,9 +120,6 @@ namespace AdminStorePortal.Data
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.Property<int>("StyleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -167,30 +127,7 @@ namespace AdminStorePortal.Data
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MaterialId");
-
-                    b.HasIndex("StyleId");
-
                     b.ToTable("LineProducts");
-                });
-
-            modelBuilder.Entity("AdminStorePortal.Entities.LineProduct", b =>
-                {
-                    b.HasOne("AdminStorePortal.Entities.ClothingMaterial", "ClothingMaterial")
-                        .WithMany()
-                        .HasForeignKey("MaterialId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AdminStorePortal.Entities.ClothingStyle", "ClothingStyle")
-                        .WithMany()
-                        .HasForeignKey("StyleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ClothingMaterial");
-
-                    b.Navigation("ClothingStyle");
                 });
 #pragma warning restore 612, 618
         }
